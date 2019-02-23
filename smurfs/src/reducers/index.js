@@ -37,7 +37,7 @@ export const smReducer = (state = inistialState, action) => {
 		case FETCHED:
 			return { ...state, fetchingSmurfs: false, smurfs: action.payload };
 		case SAVING:
-			return { ...state, addingSmurf: true, smurfs: action.payload };
+			return { ...state, addingSmurf: true };
 		case SAVED:
 			return { ...state, addingSmurf: false, smurfs: action.payload };
 		case ERROR:
