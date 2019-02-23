@@ -21,7 +21,7 @@ export const FETCHED = 'FETCHED';
 export const SAVING = 'SAVING';
 export const SAVED = 'SAVED';
 export const ERROR = 'ERROR';
-
+export const DELETE = 'DELETE';
 export const fetchSmurfs = () => (dispatch) => {
 	dispatch({ type: FETCHING });
 	axios
