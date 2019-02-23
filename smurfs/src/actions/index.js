@@ -16,20 +16,20 @@
 
 import axios from 'axios';
 
-export const FETCHING_SMURFS = 'FETCHING_SMURFS';
-export const SMURFS_FETCHED = 'SMURFS_FETCHED';
-export const SAVING_SMURFS = 'SAVING_SMURFS';
-export const SMURF_SAVED = 'SMURF_SAVED';
+export const FETCHING = 'FETCHING';
+export const FETCHED = 'FETCHED';
+export const SAVING = 'SAVING';
+export const SAVED = 'SAVED';
 export const ERROR = 'ERROR';
 
 export const fetchSmurfs = () => (dispatch) => {
-	dispatch({ type: FETCHING_SMURFS });
+	dispatch({ type: FETCHING });
 	axios
 		.get(`http://localhost:3333/smurfs`)
 		.then((response) => {
-			console.log('SMURFS_FETCHED: ', response);
+			console.log('FETCHED: ', response);
 			dispatch({
-				type: SMURFS_FETCHED,
+				type: FETCHED,
 				payload: response.data
 			});
 		})
@@ -43,12 +43,12 @@ export const fetchSmurfs = () => (dispatch) => {
 };
 
 export const saveSmurf = (smurfs) => (dispatch) => {
-	dispatch({ type: SAVING_SMURFS });
+	dispatch({ type: SAVING });
 	axios
 		.post(`http://localhost:3333/smurfs`, smurfs)
 		.then((response) => {
 			dispatch({
-				type: SMURF_SAVED,
+				type: SAVED,
 				payload: response.data
 			});
 		})

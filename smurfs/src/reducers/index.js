@@ -21,7 +21,7 @@
   There is no need for 'combineReducers' in this project.
   Components can then read your store as, `state` and not `state.fooReducer`.
 */
-import { FETCHING_SMURFS, SMURFS_FETCHED, ERROR, SAVING_SMURFS, SMURF_SAVED } from '../actions/index';
+import { FETCHING, FETCHED, ERROR, SAVING, SAVED } from '../actions/index';
 
 const inistialState = {
 	smurfs: [],
@@ -30,15 +30,15 @@ const inistialState = {
 	error: null
 };
 
-export const reducer = (state = inistialState, action) => {
+export const smReducer = (state = inistialState, action) => {
 	switch (action.type) {
-		case FETCHING_SMURFS:
+		case FETCHING:
 			return { ...state, fetchingSmurfs: true };
-		case SMURFS_FETCHED:
+		case FETCHED:
 			return { ...state, fetchingSmurfs: false, smurfs: action.payload };
-		case SAVING_SMURFS:
+		case SAVING:
 			return { ...state, addingSmurf: true, smurfs: action.payload };
-		case SMURF_SAVED:
+		case SAVED:
 			return { ...state, addingSmurf: false, smurfs: action.payload };
 		case ERROR:
 			return { ...state, error: action.payload };
