@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchSmurfs } from '../actions/index';
+import { fetchSmurfs, deleteSmurf } from '../actions/index';
 
 // import Smurf from './Smurf';
 
@@ -17,6 +17,10 @@ class Smurfs extends Component {
 						return (
 							<div className="Smurf">
 								<h3>{smurf.name}</h3>
+								<h2>
+									{' '}
+									<button onClick={() => this.props.deleteSmurf()}>DELETE </button>
+								</h2>
 								<strong>{smurf.height} tall</strong>
 								<p>{smurf.age} smurf years old</p>
 							</div>
@@ -35,4 +39,4 @@ const mapStateToprops = (state) => {
 		addingSmurf: state.addingSmurf
 	};
 };
-export default connect(mapStateToprops, { fetchSmurfs })(Smurfs);
+export default connect(mapStateToprops, { fetchSmurfs, deleteSmurf })(Smurfs);

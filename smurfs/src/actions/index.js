@@ -21,7 +21,8 @@ export const FETCHED = 'FETCHED';
 export const SAVING = 'SAVING';
 export const SAVED = 'SAVED';
 export const ERROR = 'ERROR';
-export const DELETE = 'DELETE';
+export const DELETING = 'DELETING';
+export const DELETED = 'DELETED';
 export const fetchSmurfs = () => (dispatch) => {
 	dispatch({ type: FETCHING });
 	axios
@@ -56,6 +57,26 @@ export const saveSmurf = (smurfs) => (dispatch) => {
 			dispatch({
 				type: ERROR,
 				payload: 'SMURF ERROR!!',
+				err
+			});
+		});
+};
+
+export const deleteSmurf = (id) => (dispatch) => {
+	dispatch({ type: DELETING });
+	axios
+		.delete(`http://localhost:3333/smurfs/${id}`)
+		.then((res) => {
+			dispatch({
+				type: DELETED,
+				payload: res.data
+			});
+			console.log('delete', res.data);
+		})
+		.catch((err) => {
+			dispatch({
+				type: ERROR,
+				payload: 'SMURF ERROR',
 				err
 			});
 		});
